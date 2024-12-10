@@ -16,8 +16,7 @@ const Banner = () => {
           read. We are here to help you embark on new adventures, dive deep into
           captivating worlds, and spark your imagination. With easy browsing,
           fast delivery, and recommendations tailored just for you, your next
-          great story is only a click away. Ready to start your next chapter?
-          Let us make it unforgettable.
+          great story is only a click away.
         </p>
       </div>
       <div className="w-full md:w-1/2 ">

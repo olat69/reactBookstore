@@ -6,13 +6,13 @@ import { Link } from "react-router";
 const BookCard = ({ book }) => {
   return (
     <div className=" rounded-lg transition-shadow duration-300 ">
-      <div className="flex flex-col sm:flex-row sm:items-center size-80 sm:justify-center gap-4">
-        <div className="sm:h-72 sm:flex-shrink-0 border rounded-md">
+      <div className="flex flex-col sm:flex-row sm:items-center size-max md:size-80 sm:justify-center gap-4">
+        <div className=" size-1/2 sm:h-72 sm:w-max sm:flex-shrink-0 border rounded-md">
           <Link to={`/books/${book.id}`}>
             <img
               src={`${getImgUrl(book.coverImage)}`}
               alt=""
-              className="w-full bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
+              className=" bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
             />
           </Link>
         </div>
