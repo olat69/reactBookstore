@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const BookCard = ({ book }) => {
   return (
     <div className=" rounded-lg transition-shadow duration-300 ">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:h-72  sm:justify-center gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center size-80 sm:justify-center gap-4">
         <div className="sm:h-72 sm:flex-shrink-0 border rounded-md">
           <Link to={`/books/${book.id}`}>
             <img
@@ -23,8 +23,8 @@ const BookCard = ({ book }) => {
             </h3>
           </Link>
           <p className="text-gray-600 mb-5 ">
-            {book.description.length > 80
-              ? `${book.description.slice(0, 80)}...`
+            {book.description.length > 60
+              ? `${book.description.slice(0, 60)}...`
               : book.description}
           </p>
           <p className="font-medium mb-5">
@@ -35,7 +35,7 @@ const BookCard = ({ book }) => {
           </p>
           <button className="btn-primary px-6 space-x-1 flex items-center gap-1 ">
             <FiShoppingCart className="" />
-            <span>Add to Cart</span>
+            <span>Add </span>
           </button>
         </div>
       </div>
