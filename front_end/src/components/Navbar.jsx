@@ -40,15 +40,15 @@ const Navbar = () => {
           <div>
             {currentUser ? (
               <>
-                <button className="py-2 ">
-                  <FaUser className="size-5 " />
-                </button>
-              </>
-            ) : (
-              <>
                 <Link to="/login">
                   <FaRegUser className="size-5 " />
                 </Link>
+              </>
+            ) : (
+              <>
+                <button className="py-2 ">
+                  <FaUser className="size-5 " />
+                </button>
               </>
             )}
           </div>
