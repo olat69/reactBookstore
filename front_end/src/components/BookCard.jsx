@@ -1,10 +1,18 @@
+/* eslint-disable react/prop-types */
 import { FiShoppingCart } from "react-icons/fi";
 import getImgUrl from "../utils/getImgUrl";
-import PropTypes from "prop-types";
+//import PropTypes from "prop-types";
 import { useState } from "react";
 import BookPreview from "./Bookpreview";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/features/cart/cartSlice";
 
 const BookCard = ({ book }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (products) => {
+    dispatch(addToCart(products));
+  };
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const openPopup = () => setIsPopupOpen(true);
@@ -48,7 +56,10 @@ const BookCard = ({ book }) => {
               ${book.oldPrice}
             </span>
           </p>
-          <button className="btn-primary px-6 space-x-1 flex items-center gap-1">
+          <button
+            onClick={() => handleAddToCart(book)}
+            className="btn-primary px-6 space-x-1 flex items-center gap-1"
+          >
             <FiShoppingCart />
             <span>Add</span>
           </button>
@@ -56,17 +67,6 @@ const BookCard = ({ book }) => {
       </div>
     </div>
   );
-};
-
-BookCard.propTypes = {
-  book: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    coverImage: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    newPrice: PropTypes.number.isRequired,
-    oldPrice: PropTypes.number.isRequired,
-  }).isRequired,
 };
 
 export default BookCard;
