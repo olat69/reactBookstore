@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import { FiShoppingCart } from "react-icons/fi";
-import getImgUrl from "../utils/getImgUrl";
-//import PropTypes from "prop-types";
+import BookPreview from "../../components/Bookpreview";
 import { useState } from "react";
-import BookPreview from "./Bookpreview";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/features/cart/cartSlice";
+import { addToCart } from "../../redux/features/cart/cartSlice";
+import { getImgUrl } from "../../utils/getImgUrl";
 
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import BookCard from "./BookCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import BookCard from "../pages/books/BookCard";
 
 const Recommend = () => {
   const [books, setBooks] = useState([]);

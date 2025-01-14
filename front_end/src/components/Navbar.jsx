@@ -7,8 +7,11 @@ import { FaRegHeart } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaUser } from "react-icons/fa6";
 import Sidebar from "./Sidebar";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const currentUser = useState(false);
 
@@ -56,10 +59,17 @@ const Navbar = () => {
           <button className="hidden sm:block">
             <FaRegHeart className="size-5 " />
           </button>
-          <button className="bg-primary flex items-center justify-evenly w-full py-1 md:px-5 px-4 ">
+          <Link
+            to="/cart"
+            className="bg-primary flex items-center justify-evenly w-full py-1 md:px-5 px-4 "
+          >
             <MdOutlineShoppingCart />
-            <span className="font-primary">0</span>
-          </button>
+            {cartItems.length > 0 && (
+              <span className="text-sm font-semibold sm:ml-1">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
         </div>
       </nav>
     </header>
