@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       <ul className="list-none p-4 mt-10 text-white text-2xl">
         <li className="py-2 text-center hover:bg-gray-700 mt-7">
-          <a href="#home">Home</a>
+          <a href="/">Home</a>
         </li>
         <li className="py-2 text-center hover:bg-gray-700 mt-7">
           <a href="#about">About</a>
