@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,17 +5,10 @@ import { Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import BookCard from "../pages/books/BookCard";
+import { useFetchAllBooksQuery } from "../redux/features/booksApi";
 
 const Recommend = () => {
-  const [books, setBooks] = useState([]);
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("books.json");
-      const result = await response.json();
-      setBooks(result);
-    }
-    fetchData();
-  }, []);
+  const { data: books = [] } = useFetchAllBooksQuery;
 
   return (
     <div className=" w-full">
