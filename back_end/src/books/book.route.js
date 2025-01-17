@@ -3,7 +3,7 @@ const {
   createBook,
   getAllBooks,
   getSingleBook,
-  updateBook,
+  UpdateBook,
   deleteBook,
 } = require("./book.controller");
 const router = express.Router();
@@ -12,10 +12,10 @@ router.post("/createbook", createBook);
 
 router.get("/", getAllBooks);
 
-router.get("/id", getSingleBook);
+router.get("/:id", getSingleBook);
 
-router.put("/edit/id", updateBook);
+router.put("/edit/:id", UpdateBook);
 
-router.delete("/id", deleteBook);
+router.delete("/:id", deleteBook);
 
 module.exports = router;

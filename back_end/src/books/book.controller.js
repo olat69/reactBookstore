@@ -6,7 +6,7 @@ const createBook = async (req, res) => {
     await newBook.save();
     res
       .status(200)
-      .send({ message: "Book has been created sucessfully", book: newBook });
+      .send({ message: "Book has been created successfully", book: newBook });
   } catch (error) {
     console.error("Error", error);
     res.status(500).send({ message: "Failed to create book, Try again" });
@@ -28,31 +28,33 @@ const getSingleBook = async (req, res) => {
     const { id } = req.params;
     const book = await Book.findById(id);
     if (!book) {
-      return res.status(404).send({ message: "Book not found" });
+      res.status(404).send({ message: "Book not Found!" });
     }
     res.status(200).send(book);
   } catch (error) {
-    console.error("Error", error);
-    res.status(500).send({ message: "Failed to get book, Try again" });
+    console.error("Error fetching book", error);
+    res.status(500).send({ message: "Failed to fetch book" });
   }
 };
 
-const updateBook = async (req, res) => {
+const UpdateBook = async (req, res) => {
   try {
     const { id } = req.params;
-    const book = await Book.findByIdAndUpdate(id, req.body, {
+    const updatedBook = await Book.findByIdAndUpdate(id, req.body, {
       new: true,
     });
-    if (!book) {
-      return res.status(404).send({ message: "Book not found" });
+    if (!updatedBook) {
+      res.status(404).send({ message: "Book is not Found!" });
     }
-    res.status(200).send(book);
+    res.status(200).send({
+      message: "Book updated successfully",
+      book: updatedBook,
+    });
   } catch (error) {
-    console.error("Error", error);
-    res.status(500).send({ message: "Failed to update book, Try again" });
+    console.error("Error updating a book", error);
+    res.status(500).send({ message: "Failed to update a book" });
   }
 };
-
 const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
@@ -71,6 +73,6 @@ module.exports = {
   createBook,
   getAllBooks,
   getSingleBook,
-  updateBook,
+  UpdateBook,
   deleteBook,
 };

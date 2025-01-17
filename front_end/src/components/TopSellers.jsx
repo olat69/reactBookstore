@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { useFetchAllBooksQuery } from "../redux/features/booksApi";
+import { useFetchAllBooksQuery } from "../redux/features/cart/booksApi";
 
 const category = [
   "Choose a genre",
@@ -15,10 +15,14 @@ const category = [
   "Horror",
   "Adventure",
 ];
+
 const TopSellers = () => {
   const [selectedCategory, setSelectedCategory] = useState("Choose a genre");
 
-  const { data: books = [] } = useFetchAllBooksQuery;
+  const { data: books = [], isLoading, isError } = useFetchAllBooksQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error fetching books</div>;
 
   const filteredBooks =
     selectedCategory === "Choose a genre"
@@ -70,8 +74,8 @@ const TopSellers = () => {
         modules={[Pagination, Navigation]}
       >
         <div>
-          {filteredBooks.map((book, index) => (
-            <SwiperSlide modules={[]} key={index}>
+          {filteredBooks.map((book) => (
+            <SwiperSlide modules={[]} key={book._id}>
               <BookCard book={book} />
             </SwiperSlide>
           ))}

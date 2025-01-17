@@ -13,7 +13,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "vite": "^6.0.7"
   },
   "keywords": [],
   "author": "",

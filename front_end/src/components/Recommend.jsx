@@ -5,13 +5,16 @@ import { Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import BookCard from "../pages/books/BookCard";
-import { useFetchAllBooksQuery } from "../redux/features/booksApi";
+import { useFetchAllBooksQuery } from "../redux/features/cart/booksApi";
 
 const Recommend = () => {
-  const { data: books = [] } = useFetchAllBooksQuery;
+  const { data: books = [], isLoading, isError } = useFetchAllBooksQuery();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error fetching books</div>;
 
   return (
-    <div className=" w-full">
+    <div className="w-full">
       <h1 className="text-3xl font-semibold">Recommended For You</h1>
       <div className="py-5 "></div>
       <Swiper
@@ -40,8 +43,8 @@ const Recommend = () => {
         className="mySwiper"
       >
         <div>
-          {books.slice(8, 16).map((book, index) => (
-            <SwiperSlide modules={[]} key={index}>
+          {books.map((book) => (
+            <SwiperSlide modules={[]} key={book._id}>
               <BookCard book={book} />
             </SwiperSlide>
           ))}
